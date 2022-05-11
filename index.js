@@ -24,6 +24,7 @@ dotenv.config();
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
+app.use('/docs',express.static('uploads'))
 
 db.mongoose
   .connect(db.url, {
