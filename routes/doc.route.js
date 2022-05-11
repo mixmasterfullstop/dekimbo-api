@@ -23,7 +23,7 @@ module.exports = (app) => {
     router.post("/",[upload.single('doc')],doc.addDocument);
   
     router.get("/",doc.findAll);
-    router.get("/:download", document.downloadFile);
+    router.get("/:download", doc.downloadFile);
   
     // router.delete("/:id",[authJwt.verifyToken], location.delete);
   

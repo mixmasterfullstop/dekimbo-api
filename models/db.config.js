@@ -1,4 +1,4 @@
 module.exports = {
-    url: "mongodb://localhost:27017/dekimbo",
+    url: "mongodb+srv://dekimbo:<619619>@cluster0.xbr1p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   };
   
