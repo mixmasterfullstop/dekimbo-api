@@ -37,19 +37,15 @@ exports.addDocument = async(req, res) => {
     });
 
 
-  res.send('done')
+ 
 
     const document = new Document({
       title: req.body.title,
       author: req.body.name,
-      url: 'https://afternoon-lowlands-61668.herokuapp.com/api/document/' +req.body.url,
+      url: 'https://guarded-cove-37393.herokuapp.com/api/document/' +req.body.url,
       desc: req.body.desc,
     });
-    try {
   
-    }catch(err) {
-      res.send(400);
-    }
     document
       .save(document)
       .then((data) => {
