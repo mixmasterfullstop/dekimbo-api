@@ -42,7 +42,7 @@ exports.addDocument = async(req, res) => {
     const document = new Document({
       title: req.body.title,
       author: req.body.name,
-      url: 'https://guarded-cove-37393.herokuapp.com/api/document/' +req.file.filename,
+      url: 'https://guarded-cove-37393.herokuapp.com/api/doc/' +req.file.filename,
       desc: req.body.desc,
     });
   
