@@ -17,21 +17,22 @@ const copyleaks = new Copyleaks();
 
 exports.addDocument = async(req, res) => {
     
-     console.log(req.file)
-    var submission = new CopyleaksFileSubmissionModel(
-        'aGVsbG8gd29ybGQ=',
-        req.file.filename,
+     var submission = new CopyleaksURLSubmissionModel(
+        'https://guarded-cove-37393.herokuapp.com/docs/H180270P.docx',
         {
+    
           sandbox: true,
           webhooks: {
-            status: 'http://127.0.0.1:8090/api/doc//submit-file-webhook/200'
+            status: `https://eo4m9dsgm654ocy.m.pipedream.net/submit-url-webhook/{STATUS}`
           }
         }
-      )
-   
+      );
     copyleaks.loginAsync('htndemzy@gmail.com','9d20a1df-8622-4eba-a73c-ab2db2939ea9').then(loginResult=> {
-        copyleaks.submitFileAsync('education', loginResult, Date.now() + 1, submission).then(result => console.log(result), error => { console.log(error) });
-        // copyleaks.submitFileAsync('businesses', loginResult, Date.now() + 2, submission).then(result => logSuccess('submitFileAsync - businesses', result), error => logError('submitFileAsync - businesses', error));
+      
+        copyleaks.submitUrlAsync('education', loginResult, Date.now() + 1, submission).then(result => res.send(result), err => {res.send(err)});
+        // copyleaks.submitUrlAsync('businesses', loginResult, Date.now() + 2, submission).then(res => logSuccess('submitUrlAsync - businesses', res), err => logError('submitUrlAsync - businesses', err));
+
+
     } , err=> {
         console.log(err)
     });
@@ -39,24 +40,24 @@ exports.addDocument = async(req, res) => {
 
  
 
-    const document = new Document({
-      title: req.body.title,
-      author: req.body.name,
-      url: 'https://guarded-cove-37393.herokuapp.com/docs/' +req.file.filename,
-      desc: req.body.desc,
-    });
+    // const document = new Document({
+    //   title: req.body.title,
+    //   author: req.body.name,
+    //   url: 'https://guarded-cove-37393.herokuapp.com/docs/' +req.file.filename,
+    //   desc: req.body.desc,
+    // });
   
-    document
-      .save(document)
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occured while creating the Document",
-        });
-      });
+    // document
+    //   .save(document)
+    //   .then((data) => {
+    //     res.send(data);
+    //   })
+    //   .catch((err) => {
+    //     res.status(500).send({
+    //       message:
+    //         err.message || "Some error occured while creating the Document",
+    //     });
+    //   });
   };
 
 exports.findAll = (req, res) => {
@@ -79,3 +80,18 @@ exports.findAll = (req, res) => {
 			return res.send(error)
 		}
 	})}
+
+
+    exports.downloadFile = (req, res, next) => {
+        const directoryPath = process.cwd() +'/uploads/'
+        const filename = req.params.filename
+    
+        res.download(directoryPath + filename, filename, (error) => {
+            if (error) {
+                return res.send(error)
+            }
+        })}
+        exports.hook = (req, res) => {
+            console.log(req.body) // Call your action on the request here
+            res.status(200).end() // Responding is important
+          }
