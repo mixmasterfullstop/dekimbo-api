@@ -25,7 +25,7 @@ exports.addDocument = async(req, res) => {
       {
         sandbox: true,
         webhooks: {
-          status: `https://guarded-cove-37393.herokuapp.com/docs/hook/submit-url-webhook/{STATUS}/`
+          status: `https://eo4m9dsgm654ocy.m.pipedream.net/docs/hook/submit-url-webhook/{STATUS}/`
         }
       }
     );
