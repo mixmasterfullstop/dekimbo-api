@@ -25,7 +25,7 @@ exports.addDocument = async(req, res) => {
       {
         sandbox: true,
         webhooks: {
-          status: `https://1d13-41-79-190-68.eu.ngrok.io/api/doc/hook/submit-url-webhook/{STATUS}/`
+          status: `http://164.92.147.89:8090/docs/api/doc/hook/submit-url-webhook/{STATUS}/`
         }
       }
     );
