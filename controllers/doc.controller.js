@@ -25,7 +25,7 @@ exports.addDocument = async(req, res) => {
       {
         sandbox: true,
         webhooks: {
-          status: `http://164.92.147.89:8090/docs/hook/submit-url-webhook/{STATUS}/`
+          status: `http://164.92.147.89:8090/doc/hook/submit-url-webhook/{STATUS}/`
         }
       }
     );
