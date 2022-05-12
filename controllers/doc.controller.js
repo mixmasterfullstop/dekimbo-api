@@ -16,48 +16,42 @@ const copyleaks = new Copyleaks();
 
 
 exports.addDocument = async(req, res) => {
-    
-     var submission = new CopyleaksURLSubmissionModel(
-        'https://guarded-cove-37393.herokuapp.com/docs/H180270P.docx',
-        {
-    
-          sandbox: true,
-          webhooks: {
-            status: `https://eo4m9dsgm654ocy.m.pipedream.net/submit-url-webhook/{STATUS}`
-          }
+
+
+
+  try{
+    var submission = new CopyleaksURLSubmissionModel(
+      `https://guarded-cove-37393.herokuapp.com/docs/${req.file.filename}`,
+      {
+        sandbox: true,
+        webhooks: {
+          status: `https://guarded-cove-37393.herokuapp.com/docs/hook/submit-url-webhook/{STATUS}/`
         }
-      );
-    copyleaks.loginAsync('htndemzy@gmail.com','9d20a1df-8622-4eba-a73c-ab2db2939ea9').then(loginResult=> {
+      }
+    );
+const loginResult= await copyleaks.loginAsync('htndemzy@gmail.com','9d20a1df-8622-4eba-a73c-ab2db2939ea9')
+   const id = Date.now() + 1
+    
+     const result = await copyleaks.submitUrlAsync('education', loginResult, id, submission)
+
+      // copyleaks.submitUrlAsync('businesses', loginResult, Date.now() + 2, submission).then(res => logSuccess('submitUrlAsync - businesses', res), err => logError('submitUrlAsync - businesses', err));
+      const document = new Document({
+        title: req.body.title,
+        author: req.body.name,
+        url: 'https://guarded-cove-37393.herokuapp.com/docs/' +req.file.filename,
+        desc: req.body.desc,
+        scanid:id
+      });
+    
+
+      await document.save()
+      res.json({document,result})
       
-        copyleaks.submitUrlAsync('education', loginResult, Date.now() + 1, submission).then(result => res.send(result), err => {res.send(err)});
-        // copyleaks.submitUrlAsync('businesses', loginResult, Date.now() + 2, submission).then(res => logSuccess('submitUrlAsync - businesses', res), err => logError('submitUrlAsync - businesses', err));
 
-
-    } , err=> {
-        console.log(err)
-    });
-
-
- 
-
-    // const document = new Document({
-    //   title: req.body.title,
-    //   author: req.body.name,
-    //   url: 'https://guarded-cove-37393.herokuapp.com/docs/' +req.file.filename,
-    //   desc: req.body.desc,
-    // });
-  
-    // document
-    //   .save(document)
-    //   .then((data) => {
-    //     res.send(data);
-    //   })
-    //   .catch((err) => {
-    //     res.status(500).send({
-    //       message:
-    //         err.message || "Some error occured while creating the Document",
-    //     });
-    //   });
+  }catch(e){
+    res.status(500).send(e.message)
+  }
+    
   };
 
 exports.findAll = (req, res) => {

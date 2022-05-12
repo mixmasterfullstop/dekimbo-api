@@ -5,6 +5,7 @@ module.exports = (mongoose) => {
         author: String,
         url: String,
         desc:String,
+        scanid: String
       },
       { timestamps: true }
     );
