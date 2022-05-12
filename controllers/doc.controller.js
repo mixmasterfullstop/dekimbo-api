@@ -21,11 +21,11 @@ exports.addDocument = async(req, res) => {
 
   try{
     var submission = new CopyleaksURLSubmissionModel(
-      `https://guarded-cove-37393.herokuapp.com/docs/${req.file.filename}`,
+      `http://164.92.147.89:8090/docs/${req.file.filename}`,
       {
         sandbox: true,
         webhooks: {
-          status: `https://guarded-cove-37393.herokuapp.com/docs/hook/submit-url-webhook/{STATUS}/`
+          status: `http://164.92.147.89:8090/docs/hook/submit-url-webhook/{STATUS}/`
         }
       }
     );
@@ -38,7 +38,7 @@ const loginResult= await copyleaks.loginAsync('htndemzy@gmail.com','9d20a1df-862
       const document = new Document({
         title: req.body.title,
         author: req.body.name,
-        url: 'https://guarded-cove-37393.herokuapp.com/docs/' +req.file.filename,
+        url: 'http://164.92.147.89:8090/docs/' +req.file.filename,
         desc: req.body.desc,
         scanid:id
       });
