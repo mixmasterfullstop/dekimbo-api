@@ -25,7 +25,7 @@ exports.addDocument = async(req, res) => {
       {
         sandbox: true,
         webhooks: {
-          status: `https://eo4m9dsgm654ocy.m.pipedream.net/submit-url-webhook/{STATUS}/`
+          status: `https://1d13-41-79-190-68.eu.ngrok.io/api/doc/hook/submit-url-webhook/{STATUS}/`
         }
       }
     );
@@ -86,6 +86,6 @@ exports.findAll = (req, res) => {
             }
         })}
         exports.hook = (req, res) => {
-            console.log(req.body) // Call your action on the request here
+            console.log(req) // Call your action on the request here
             res.status(200).end() // Responding is important
-          }
+         }

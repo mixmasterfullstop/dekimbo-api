@@ -21,13 +21,12 @@ module.exports = (app) => {
     let router = require("express").Router();
   
     router.post("/",[upload.single('doc')],doc.addDocument);
-    router.post("/hook/",doc.hook);
+    router.get("/hook/",doc.hook);
   
     router.get("/",doc.findAll);
     router.get("/:download", doc.downloadFile);
   
     // router.delete("/:id",[authJwt.verifyToken], location.delete);
-  
     // router.delete("/", [authJwt.verifyToken],location.deleteAll);
   
     app.use("/api/doc", router);
