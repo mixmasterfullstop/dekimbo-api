@@ -13,7 +13,18 @@ exports.findAll = (req, res) => {
       });
     });
 };
-
+exports.findOne = (req, res) => {
+    Report.findOne({scanid: req.params.id})
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "Some error  occured while retrieving Jobs.",
+        });
+      });
+  };
+  
 exports.updateReport = (req, res) => {
   if (!req.body) {
     return res.status(400).send({

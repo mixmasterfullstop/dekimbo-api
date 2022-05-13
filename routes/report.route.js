@@ -6,6 +6,7 @@ module.exports = (app) => {
     router.post("/update/:id",report.updateReport);
   
     router.get("/",report.findAll);
+    router.get("/:id",report.findOne);
   
     router.delete("/:id", report.delete);
   

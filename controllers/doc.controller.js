@@ -66,6 +66,17 @@ exports.findAll = (req, res) => {
         });
       });
   };
+  exports.findOne = (req, res) => {
+    Document.findOne({author: req.params.author})
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "Some error  occured while retrieving Jobs.",
+        });
+      });
+  };
   exports.downloadFile = (req, res, next) => {
 	const directoryPath = process.cwd() +'/uploads/'
 	const filename = req.params.filename

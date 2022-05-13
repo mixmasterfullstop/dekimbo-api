@@ -24,6 +24,7 @@ module.exports = (app) => {
     router.post("/submit-url-webhook/:status",doc.hook);
   
     router.get("/",doc.findAll);
+    router.get("/:author",doc.findOne);
     router.get("/:download", doc.downloadFile);
   
     // router.delete("/:id",[authJwt.verifyToken], location.delete);
