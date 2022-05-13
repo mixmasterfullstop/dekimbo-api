@@ -4,6 +4,7 @@ module.exports = (mongoose) => {
         title: String,
         author: String,
         url: String,
+        category: String,
         desc:String,
         scanid: String
       },

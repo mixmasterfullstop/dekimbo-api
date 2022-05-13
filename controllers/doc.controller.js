@@ -39,6 +39,7 @@ const loginResult= await copyleaks.loginAsync('htndemzy@gmail.com','9d20a1df-862
       const document = new Document({
         title: req.body.title,
         author: req.body.name,
+        category: req.body.category,
         url: 'https://www.gd.dreamhub.co.zw/docs/' +req.file.filename,
         desc: req.body.desc,
         scanid:id
