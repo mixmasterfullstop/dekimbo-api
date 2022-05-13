@@ -86,6 +86,6 @@ exports.findAll = (req, res) => {
             }
         })}
         exports.hook = (req, res) => {
-            console.log(req) // Call your action on the request here
+            console.log(req.body) // Call your action on the request here
             res.status(200).end() // Responding is important
          }
