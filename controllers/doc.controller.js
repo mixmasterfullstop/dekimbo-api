@@ -88,7 +88,7 @@ exports.findAll = (req, res) => {
         })}
         exports.hook = (req, res) => {
         
-         data = req.body
+         const data = req.body
           const report  = new Report({
             scanid:data.scannedDocument.scanId,
             totalWords: data.scannedDocument.totalWords,
@@ -105,9 +105,11 @@ exports.findAll = (req, res) => {
           .save(report)
           .then((data) => {
             console.log(data)
+            res.status(200).end()
           })
           .catch((err) => {
               console.log(err.message)
+              res.status(200).end()
           });
 
             res.status(200).end() // Responding is important
