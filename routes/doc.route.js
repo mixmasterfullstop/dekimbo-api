@@ -21,7 +21,7 @@ module.exports = (app) => {
     let router = require("express").Router();
   
     router.post("/",[upload.single('doc')],doc.addDocument);
-    router.post("/hook/",doc.hook);
+    router.post("/submit-url-webhook/:status",doc.hook);
   
     router.get("/",doc.findAll);
     router.get("/:download", doc.downloadFile);

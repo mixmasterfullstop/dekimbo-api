@@ -25,7 +25,7 @@ exports.addDocument = async(req, res) => {
       {
         sandbox: true,
         webhooks: {
-          status: `https://eo4m9dsgm654ocy.m.pipedream.net/submit-url-webhook/{STATUS}/`
+          status: `https://www.gd.dreamhub.co.zw/api/doc/submit-url-webhook/{STATUS}/`
         }
       }
     );
@@ -86,6 +86,7 @@ exports.findAll = (req, res) => {
             }
         })}
         exports.hook = (req, res) => {
+             console.log(req.params.status)
             console.log(req.body) // Call your action on the request here
             res.status(200).end() // Responding is important
          }
