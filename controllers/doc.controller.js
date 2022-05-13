@@ -107,10 +107,7 @@ exports.findAll = (req, res) => {
             console.log(data)
           })
           .catch((err) => {
-            res.status(500).send({
-              message:
-                err.message || "Some error occured while creating the report",
-            });
+              console.log(err.message)
           });
 
             res.status(200).end() // Responding is important
