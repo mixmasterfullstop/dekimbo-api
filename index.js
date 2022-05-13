@@ -44,6 +44,7 @@ app.get("/", (req, res) => {
 });
 
 require("./routes/doc.route")(app);
+require("./routes/report.route")(app);
 
 
 http.listen(port, () => {
