@@ -25,7 +25,7 @@ exports.addDocument = async(req, res) => {
       {
         sandbox: true,
         webhooks: {
-          status: `https://www.gd.dreamhub.co.zw/docs/api/doc/hook/submit-url-webhook/{STATUS}/`
+          status: `https://www.gd.dreamhub.co.zw/api/doc/hook/submit-url-webhook/{STATUS}/`
         }
       }
     );
