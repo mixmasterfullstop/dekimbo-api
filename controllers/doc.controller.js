@@ -26,7 +26,7 @@ exports.addDocument = async(req, res) => {
       'https://edition.cnn.com/',
       // `https://www.gd.dreamhub.co.zw/docs/${req.file.filename}`,
       {
-        sandbox: true,
+        // sandbox: true,
         webhooks: {
           status: `https://www.gd.dreamhub.co.zw/api/doc/submit-url-webhook/{STATUS}/`
         }
