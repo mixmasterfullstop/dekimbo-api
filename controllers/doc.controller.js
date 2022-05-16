@@ -24,6 +24,7 @@ exports.addDocument = async(req, res) => {
     var submission = new CopyleaksURLSubmissionModel(
       `https://www.gd.dreamhub.co.zw/docs/${req.file.filename}`,
       {
+        sandbox: true,
         webhooks: {
           status: `https://www.gd.dreamhub.co.zw/api/doc/submit-url-webhook/{STATUS}/`
         }
@@ -100,29 +101,28 @@ exports.findAll = (req, res) => {
         exports.hook = (req, res) => {
         
          const data = req.body
-         console.log(data)
-          // const report  = new Report({
-          //   scanid:data.scannedDocument.scanId,
-          //   totalWords: data.scannedDocument.totalWords,
-          //   totalExcluded: data.scannedDocument.totalExcluded,
-          //   credit: data.scannedDocument.credit,
-          //   expectedCredits: data.scannedDocument.expectedCredits,
-          //   creationTime: data.scannedDocument.creationTime,
-          //   status:data.status,
-          //   results:data.results,
-          //   notifications: data.notifications,
+          const report  = new Report({
+            scanid:data.scannedDocument.scanId,
+            totalWords: data.scannedDocument.totalWords,
+            totalExcluded: data.scannedDocument.totalExcluded,
+            credit: data.scannedDocument.credit,
+            expectedCredits: data.scannedDocument.expectedCredits,
+            creationTime: data.scannedDocument.creationTime,
+            status:data.status,
+            results:data.results,
+            notifications: data.notifications,
     
-          // })
-          // report
-          // .save(report)
-          // .then((data) => {
-          //   console.log(data)
-          //   res.status(200).end()
-          // })
-          // .catch((err) => {
-          //     console.log(err.message)
-          //     res.status(200).end()
-          // });
+          })
+          report
+          .save(report)
+          .then((data) => {
+            console.log(data)
+            res.status(200).end()
+          })
+          .catch((err) => {
+              console.log(err.message)
+              res.status(200).end()
+          });
 
             res.status(200).end() // Responding is important
          }
