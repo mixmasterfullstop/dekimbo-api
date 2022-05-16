@@ -13,6 +13,7 @@ const { Copyleaks,
     CopyleaksDeleteRequestModel,
     CopyleaksExportModel
 } = require('plagiarism-checker');  
+const console = require("console");
 const copyleaks = new Copyleaks();
 
 
@@ -99,30 +100,31 @@ exports.findAll = (req, res) => {
             }
         })}
         exports.hook = (req, res) => {
+          console.log(req)
         
-         const data = req.body
-          const report  = new Report({
-            scanid:data.scannedDocument.scanId,
-            totalWords: data.scannedDocument.totalWords,
-            totalExcluded: data.scannedDocument.totalExcluded,
-            credit: data.scannedDocument.credit,
-            expectedCredits: data.scannedDocument.expectedCredits,
-            creationTime: data.scannedDocument.creationTime,
-            status:data.status,
-            results:data.results,
-            notifications: data.notifications,
+        //  const data = req.body
+        //   const report  = new Report({
+        //     scanid:data.scannedDocument.scanId,
+        //     totalWords: data.scannedDocument.totalWords,
+        //     totalExcluded: data.scannedDocument.totalExcluded,
+        //     credit: data.scannedDocument.credit,
+        //     expectedCredits: data.scannedDocument.expectedCredits,
+        //     creationTime: data.scannedDocument.creationTime,
+        //     status:data.status,
+        //     results:data.results,
+        //     notifications: data.notifications,
     
-          })
-          report
-          .save(report)
-          .then((data) => {
-            console.log(data)
-            res.status(200).end()
-          })
-          .catch((err) => {
-              console.log(err.message)
-              res.status(200).end()
-          });
+        //   })
+        //   report
+        //   .save(report)
+        //   .then((data) => {
+        //     console.log(data)
+        //     res.status(200).end()
+        //   })
+        //   .catch((err) => {
+        //       console.log(err.message)
+        //       res.status(200).end()
+        //   });
 
             res.status(200).end() // Responding is important
          }
