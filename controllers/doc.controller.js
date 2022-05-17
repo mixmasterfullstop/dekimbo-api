@@ -100,7 +100,6 @@ exports.findAll = (req, res) => {
             }
         })}
         exports.hook = (req, res) => {
-          console.log(req.body, req.headers)
         
          const data = req.body
           const report  = new Report({
