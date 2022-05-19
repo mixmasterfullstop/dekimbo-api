@@ -25,7 +25,7 @@ exports.addDocument = async(req, res) => {
     var submission = new CopyleaksURLSubmissionModel(
       `https://www.gd.dreamhub.co.zw/docs/${req.file.filename}`,
       {
-        // sandbox: true,
+        sandbox: true,
         webhooks: {
           status: `https://www.gd.dreamhub.co.zw/api/doc/submit-url-webhook/{STATUS}/`
         }
