@@ -16,6 +16,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     Report.findOne({scanid: req.params.id})
       .then((data) => {
+        console.log(data)
         res.send(data);
       })
       .catch((err) => {
