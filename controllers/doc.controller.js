@@ -25,7 +25,7 @@ exports.addDocument = async(req, res) => {
     var submission = new CopyleaksURLSubmissionModel(
       `https://www.gd.dreamhub.co.zw/docs/${req.file.filename}`,
       {
-        sandbox: true,
+        // sandbox: true,
         webhooks: {
           status: `https://www.gd.dreamhub.co.zw/api/doc/submit-url-webhook/{STATUS}/`
         }
@@ -41,7 +41,7 @@ const loginResult= await copyleaks.loginAsync('sojandem@gmail.com','5f3ac3e4-e33
         title: req.body.title,
         author: req.body.name,
         category: req.body.category,
-        url: 'https://www.gd.dreamhub.co.zw/docs/' +req.file.filename,
+        url: 'https://www.gd.dreamhub.co.zw/docs/'+req.file.filename,
         desc: req.body.desc,
         scanid:id
       });
