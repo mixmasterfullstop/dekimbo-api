@@ -31,7 +31,7 @@ exports.addDocument = async(req, res) => {
         }
       }
     );
-const loginResult= await copyleaks.loginAsync('h180291g@hit.ac.zw','a67ecfc7-0cf2-478e-be71-3034fc120fdd')
+const loginResult= await copyleaks.loginAsync('sojandem@gmail.com','5f3ac3e4-e336-4af5-a2fd-2e40ad42f4df')
    const id = Date.now() + 1
     
      const result = await copyleaks.submitUrlAsync('education', loginResult, id, submission)
